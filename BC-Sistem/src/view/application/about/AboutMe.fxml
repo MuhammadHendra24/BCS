@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="apMother" prefHeight="517.0" prefWidth="689.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="163.0" layoutY="202.0" prefHeight="35.0" prefWidth="209.0" text="MuhammadHendra_Copyright@2016" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="237.0" text="PERANCANGAN SISTEM INFORMASI LAPORAN PEMASUKAN DAN PENGELUARAN BARANG" textFill="WHITE" />
+      <Label layoutX="39.0" layoutY="258.0" text="BERBASIS JAVAFX VERSION 8.0 DENGAN DATABASE MYSQ DI GUDANG BERIKAT" textFill="WHITE" />
+      <Text fill="#ffffffeb" layoutX="160.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nitto">
+         <font>
+            <Font name="System Bold Italic" size="96.0" />
+         </font>
+      </Text>
+      <Text fill="#f4f1f1" layoutX="161.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PT. Nitto Materials Indonesia" wrappingWidth="231.173828125">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Text>
+      <Label layoutX="147.0" layoutY="281.0" text="PT NITTO MATERIALS INDONESIA CIKARANG" textFill="WHITE" />
+   </children>
+</AnchorPane>

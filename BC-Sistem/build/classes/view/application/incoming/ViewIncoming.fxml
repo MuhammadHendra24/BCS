@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="541.0" prefWidth="859.0" stylesheets="@../../../style/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.application.incoming.ViewIncomingController">
+   <children>
+      <BorderPane layoutX="238.0" layoutY="136.0" prefHeight="521.0" prefWidth="743.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER" prefHeight="69.0" prefWidth="743.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="tfSearch" onKeyReleased="#tfSearchOnKeyReleased" prefHeight="25.0" prefWidth="584.0" promptText="Search Incoming" />
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="31.0" prefWidth="31.0" />
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btntAddIncoming" mnemonicParsing="false" onAction="#AddIncomingOnAction" text="Add Incoming" />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <TableView fx:id="tblincomingView" onMouseClicked="#tblincomingOnClick" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                  <TableColumn fx:id="tblClmDocNo" prefWidth="75.0" text="No. Doc" />
+                <TableColumn fx:id="tblClmDocType" prefWidth="125.0" text="Doc Type" />
+                  <TableColumn fx:id="tblClmDocDate" prefWidth="75.0" text="Doc Date" />
+                  <TableColumn fx:id="tblClmVendor" prefWidth="75.0" text="Vendor" />
+                  <TableColumn fx:id="tblClmItemCodeview" prefWidth="92.0" text="Item Code" />
+                  <TableColumn fx:id="tblClmItemDescriptionview" prefWidth="99.0" text="Item Description" />
+                  <TableColumn fx:id="tblClmQtyGood" prefWidth="103.0" text="Qty Good" />
+                  <TableColumn fx:id="tblClmQtyReject" prefWidth="75.0" text="Qty Reject" />
+                  <TableColumn fx:id="tblClmUM" prefWidth="113.0" text="U_M" />
+                  <TableColumn fx:id="tblClmInvoice" prefWidth="113.0" text="Invoice" />
+                  <TableColumn fx:id="tblClmInvoiceDate" prefWidth="113.0" text="Invoice Date" />
+                  <TableColumn fx:id="tblClmAmount" prefWidth="113.0" text="Amount" />
+                  <TableColumn fx:id="tblClmCurrency" prefWidth="113.0" text="Currency" />
+                  <TableColumn fx:id="tblClmGWeight" prefWidth="113.0" text="G.weight" />
+                  <TableColumn fx:id="tblClmAdd" prefWidth="113.0" text="Add By" />
+                  <TableColumn fx:id="tblClmAddDate" prefWidth="113.0" text="Date" />
+              </columns>
+            </TableView>
+         </center>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </BorderPane>
+   </children>
+</AnchorPane>

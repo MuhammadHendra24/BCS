@@ -1,0 +1,240 @@
+
+package controller.application.incoming;
+
+
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import java.util.ResourceBundle;
+
+import DAL.IncOutGoing;
+import DAL.Outgoing;
+import DAL.SortDoc;
+import Getway.IncomOutgoingGateway;
+import Getway.SortDocGetway;
+import List.ListOutgoing;
+
+import List.ListIncomingOutgoing;
+import dataBase.DBConnection;
+import dataBase.SQL;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import media.userNameMedia;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.view.JasperViewer;
+
+
+/**
+ * @author Hendra
+ *
+ * Nov 17, 2016
+ */
+public class Report implements Initializable{
+	
+    
+    
+    @FXML
+    private MenuButton mbtnSortDokumentIncomig;
+    @FXML
+    private MenuButton mbtnSortDokumentOutgoing;
+   
+    @FXML
+    public Button btnPrintIncoming;
+    @FXML
+    public Button btnPrinoutgoing;
+    @FXML
+    public Button btnClose;
+   
+ 
+    String vendorId;
+    String itemId;
+    private String userId;
+    LocalDate datenodoc;
+    LocalDate datenodocand;
+	@FXML
+    private TextField tfIncomingreport;
+	@FXML
+    private TextField tfOutgoingreport;
+	@FXML
+    private TextField text1;
+	@FXML
+    private TextField text2;
+	@FXML
+    private TextField tfSearchIncoming;
+	@FXML
+    private DatePicker dateincoming;
+	@FXML
+    private DatePicker dateincomingend;
+	@FXML
+	private TableView<ListIncomingOutgoing> tblPrintSortViewIncoming;
+	@FXML
+	private TableColumn<Object, Object> tblClmIncomingPrint;
+	
+	
+	
+	
+	@FXML
+    private TextField tfSearchOutgoing;
+	@FXML
+    private DatePicker dateoutgoing;
+	@FXML
+    private DatePicker dateoutgoingend;
+	@FXML
+	private TableView<ListOutgoing> tblPrintSortViewOutgoing;
+	@FXML
+	private TableColumn<Object, Object> tblJenisDocument;
+	@FXML
+	private TableColumn<Object, Object> tblJenisDescription;
+	
+	
+	public String incomingId;
+    public String sortId;
+    private String currencyId;
+    private String sortdokid;
+    private String vendorid;
+    private String itemcodeid;
+    private String id;
+    private String incomid;
+    
+    
+    
+	SQL sql = new SQL();
+
+    DBConnection dbCon = new DBConnection();
+    Connection con = dbCon.geConnection();
+    PreparedStatement pst;
+    ResultSet rs;
+	
+
+    
+    userNameMedia nameMedia;
+
+   
+    public void setNameMedia(userNameMedia nameMedia) {
+        userId = nameMedia.getId();
+        this.nameMedia = nameMedia;
+        
+    }
+    SortDoc sortDoc = new SortDoc();
+    IncOutGoing incOutGoing = new IncOutGoing();
+    Outgoing outgoing = new Outgoing();
+    IncomOutgoingGateway incomOutgoingGateway = new IncomOutgoingGateway();
+    SortDocGetway sortDocGetway = new SortDocGetway();
+    
+    ObservableList<ListIncomingOutgoing> listIncoming = FXCollections.observableArrayList();
+    	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+		
+	}
+	
+	@FXML
+    private void tblPrintDocIncommingOnClick(MouseEvent event) {
+        tfIncomingreport.setText(tblPrintSortViewIncoming.getSelectionModel().getSelectedItem().getSortdokumen());
+        sortdokid = tblPrintSortViewIncoming.getSelectionModel().getSelectedItem().getId();
+        System.out.println(sortdokid);
+  } 
+  
+  @FXML
+    private void mbtnSortDocClicked(MouseEvent event) {
+        incOutGoing.sortdokumen = tfSearchIncoming.getText().trim();
+        tblPrintSortViewIncoming.setItems(incOutGoing.listIncoming);
+        tblClmIncomingPrint.setCellValueFactory(new PropertyValueFactory<>("sortdokumen"));
+        incomOutgoingGateway.searchView(incOutGoing);
+     
+  }
+  @FXML
+    private void tfSortdocSearchOnKeyReleased(KeyEvent event) {
+	     incOutGoing.sortdokumen = tfSearchIncoming.getText().trim();
+	     tblPrintSortViewIncoming.setItems(incOutGoing.listIncoming);
+	     tblClmIncomingPrint.setCellValueFactory(new PropertyValueFactory<>("sortdokumen"));
+	     incomOutgoingGateway.searchView(incOutGoing);
+  }
+  
+	@FXML
+    private void btnCloseOnAction(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
+	 
+	 @FXML
+	   private void aksiPrint(ActionEvent event) {
+		 try{
+			SQL sql = new SQL();
+            DBConnection dbCon = new DBConnection();
+	        Connection cn = dbCon.geConnection(); 
+    		String fileName ="./src/Report/ReportIncomingBC2.3.jrxml";
+    		String filetoFill="./src/Report/ReportIncomingBC2.3.jasper";
+    		JasperCompileManager.compileReport(fileName);
+    		Map param = new HashMap();
+    		param.put("TEST",tfIncomingreport.getText());
+    		JasperFillManager.fillReport(filetoFill, param, cn);
+       		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+    		JasperViewer.viewReport(jp,false);
+    	
+    		
+    		    		
+    	}catch(Exception ex){
+    		
+    	System.out.println(ex.toString());
+    	}
+
+}
+	 @FXML
+	   private void aksiPrintutgoing(ActionEvent event) {
+	        Date date = Date.from(dateoutgoing.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+	        Date date_end = Date.from(dateoutgoingend.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		 try{
+			SQL sql = new SQL();
+	        DBConnection dbCon = new DBConnection();
+		    Connection cn = dbCon.geConnection(); 
+	        String fileName ="./src/Report/ReportOutgoingBC2.7.jrxml";
+		    String filetoFill="./src/Report/ReportOutgoingBC2.7.jasper";
+	        JasperCompileManager.compileReport(fileName);
+	        Map<String, Object> param = new HashMap<String, Object>();
+	        param.put("tgl1",dateoutgoing.getValue());
+	        param.put("tgl2",dateoutgoingend.getValue());
+	        JasperFillManager.fillReport(filetoFill, param, cn);
+     		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+  		JasperViewer.viewReport(jp,false);
+  	  		  		    		
+  	}catch(Exception ex){
+  		
+  	System.out.println(ex.toString());
+  	}
+
+}
+
+		    
+	   }
+	 
+
+

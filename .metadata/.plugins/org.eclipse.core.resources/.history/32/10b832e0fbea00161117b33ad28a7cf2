@@ -1,0 +1,395 @@
+
+package controller.application.incoming;
+
+
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import java.util.ResourceBundle;
+
+import DAL.Currency;
+import DAL.Customer;
+import DAL.IncOutGoing;
+import DAL.ItemMaster;
+import DAL.Outgoing;
+import DAL.SortDoc;
+import DAL.Vendor;
+import Getway.CurrencyGetway;
+import Getway.CustomerGetway;
+import Getway.IncomOutgoingGateway;
+import Getway.ItemMasterGateway;
+import Getway.SortDocGetway;
+import Getway.VendorGetway;
+import List.ListOutgoing;
+import List.ListSortDoc;
+import List.ListVendor;
+import List.ListCurrency;
+import List.ListCustomer;
+import List.ListIncomingOutgoing;
+import List.ListItem;
+import dataBase.DBConnection;
+import dataBase.SQL;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import media.userNameMedia;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.view.JasperViewer;
+
+
+/**
+ * @author Hendra
+ *
+ * Nov 17, 2016
+ */
+public class Report implements Initializable{
+	
+    
+    
+    @FXML
+    private MenuButton mbtnByVendor;
+    @FXML
+    private MenuButton mbtnByCustomer;
+    @FXML
+    private MenuButton mbtnByItem;
+    @FXML
+    private MenuButton mbtnByDok;
+   
+    @FXML
+    public Button btnPrintByVendor;
+    @FXML
+    public Button btnPrintByCustomer;
+    @FXML
+    public Button btnPrintByItem;
+    @FXML
+    public Button btnPrintByDok;
+    @FXML
+    public Button btnClose;
+   
+ 
+    String vendorId;
+    String itemId;
+    private String userId;
+    LocalDate datenodoc;
+    LocalDate datenodocand;
+	@FXML
+    private TextField tfbyVendor;
+	@FXML
+    private TextField tfbyCustomer;
+	@FXML
+    private TextField tfbyItem;
+	@FXML
+    private TextField tfbyDok;
+	@FXML
+    private TextField tfSearchByVendor;
+	@FXML
+    private TextField tfSearchByCustomer;
+	@FXML
+    private TextField tfSearchByItem;
+	@FXML
+    private TextField tfSearchByDok;
+	@FXML
+    private DatePicker dateincoming;
+	@FXML
+    private DatePicker dateincomingend;
+	@FXML
+    private DatePicker dateoutgoing;
+	@FXML
+    private DatePicker dateoutgoingend;
+	@FXML
+	private TableView<ListVendor> tblPrintSortViewByVendor;
+	@FXML
+	private TableView<ListCustomer> tblPrintSortViewByCustomer;
+	@FXML
+	private TableView<ListItem> tblPrintSortViewByItem;
+	@FXML
+	private TableView<ListSortDoc> tblPrintSortViewByDok;
+	@FXML
+	private TableColumn<Object, Object> tblClmByVendorPrint;
+	@FXML
+	private TableColumn<Object, Object> tblClmByCustomer;
+	@FXML
+	private TableColumn<Object, Object> tblClmIByItem;
+	@FXML
+	private TableColumn<Object, Object> tblClmIncomingByDok;
+	
+	
+	
+	
+	
+	
+	
+	public String incomingId;
+    public String sortId;
+    private String currencyId;
+    private String sortdokid;
+    private String vendorid;
+    private String customerid;  
+    private String itemcodeid;
+    private String id;
+    private String incomid;
+    
+    
+    
+	SQL sql = new SQL();
+
+    DBConnection dbCon = new DBConnection();
+    Connection con = dbCon.geConnection();
+    PreparedStatement pst;
+    ResultSet rs;
+	
+
+    
+    userNameMedia nameMedia;
+
+   
+    public void setNameMedia(userNameMedia nameMedia) {
+        userId = nameMedia.getId();
+        this.nameMedia = nameMedia;
+        
+    }
+    SortDoc sortDoc = new SortDoc();
+    SortDocGetway sortDocGetway = new SortDocGetway();
+    IncomOutgoingGateway incomOutgoingGateway = new IncomOutgoingGateway();
+    IncOutGoing incOutGoing = new IncOutGoing();
+	Currency currency = new Currency();
+	CurrencyGetway currencyGetway = new CurrencyGetway();
+    Vendor vendor = new Vendor();
+    Customer customer = new Customer();
+    CustomerGetway customerGetway = new CustomerGetway();
+    ItemMaster itemmaster = new ItemMaster();
+    VendorGetway vendorGetway = new VendorGetway();
+    ItemMasterGateway itemMasterGatway = new ItemMasterGateway();
+    
+    ObservableList<ListIncomingOutgoing> listIncoming = FXCollections.observableArrayList();
+    ObservableList<ListVendor> vendorDetails = FXCollections.observableArrayList();
+    ObservableList<ListItem> itemList = FXCollections.observableArrayList();
+    ObservableList<ListCurrency> currencyList = FXCollections.observableArrayList();
+    ObservableList<ListCustomer> listCustomers = FXCollections.observableArrayList();
+    
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+		
+	}
+	
+	@FXML
+    private void tblPrintSortViewByCustomerOnClick(MouseEvent event) {
+        tfbyCustomer.setText(tblPrintSortViewByCustomer.getSelectionModel().getSelectedItem().getCustomerName());
+        customerid = tblPrintSortViewByCustomer.getSelectionModel().getSelectedItem().getId();
+        System.out.println(customerid);
+  } 
+  
+  @FXML
+    private void mbtnCustomerClicked(MouseEvent event) {
+	  customer.customerName = tfSearchByCustomer.getText().trim();
+	  tblPrintSortViewByCustomer.setItems(customer.customerList);
+      tblClmByCustomer.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+      customerGetway.searchView(customer);
+     
+  }
+  @FXML
+    private void tfCustomerSearchOnKeyReleased(KeyEvent event) {
+	  customer.customerName = tfSearchByCustomer.getText().trim();
+      tblPrintSortViewByCustomer.setItems(customer.customerList);
+      tblClmByVendorPrint.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+      customerGetway.searchView(customer);
+  }
+ 
+	@FXML
+    private void tblPrintSortViewByItemOnClick(MouseEvent event) {
+        tfbyItem.setText(tblPrintSortViewByItem.getSelectionModel().getSelectedItem().getItemCode());
+        itemcodeid = tblPrintSortViewByItem.getSelectionModel().getSelectedItem().getId();
+        System.out.println(itemcodeid);
+  } 
+  
+  @FXML
+    private void mbtnByItemClicked(MouseEvent event) {
+	  itemmaster.itemCode = tfSearchByItem.getText().trim();
+	  tblPrintSortViewByItem.setItems(itemmaster.itemList);
+      tblClmIByItem.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+      itemMasterGatway.searchView(itemmaster);
+     
+  }
+  @FXML
+    private void tfItemSearchOnKeyReleased(KeyEvent event) {
+	  itemmaster.itemCode = tfSearchByItem.getText().trim();
+      tblPrintSortViewByItem.setItems(itemmaster.itemList);
+      tblClmIByItem.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+      itemMasterGatway.searchView(itemmaster);
+  }
+  @FXML
+  private void tblPrintSortViewByVendorOnClick(MouseEvent event) {
+      tfbyVendor.setText(tblPrintSortViewByVendor.getSelectionModel().getSelectedItem().getVendorName());
+      vendorid = tblPrintSortViewByVendor.getSelectionModel().getSelectedItem().getVendorId();
+      System.out.println(vendorid);
+} 
+
+@FXML
+  private void mbtnVendorClicked(MouseEvent event) {
+	  vendor.vendorName = tfSearchByVendor.getText().trim();
+	  tblPrintSortViewByVendor.setItems(vendor.vendorDetails);
+    tblClmByVendorPrint.setCellValueFactory(new PropertyValueFactory<>("vendorName"));
+    vendorGetway.searchView(vendor);
+   
+}
+@FXML
+  private void tfVendorSearchOnKeyReleased(KeyEvent event) {
+	  vendor.vendorName = tfSearchByVendor.getText().trim();
+    tblPrintSortViewByVendor.setItems(vendor.vendorDetails);
+    tblClmByVendorPrint.setCellValueFactory(new PropertyValueFactory<>("vendorName"));
+    vendorGetway.searchView(vendor);
+}
+@FXML
+private void tblPrintSortViewByDokOnClick(MouseEvent event) {
+    tfbyDok.setText(tblPrintSortViewByDok.getSelectionModel().getSelectedItem().getSortDocName());
+    sortdokid = tblPrintSortViewByDok.getSelectionModel().getSelectedItem().getId();
+    System.out.println(sortdokid);
+} 
+
+@FXML
+private void mbtnSortDocClicked(MouseEvent event) {
+  sortDoc.sortDocName= tfSearchByDok.getText().trim();
+  tblPrintSortViewByDok.setItems(sortDoc.ListSortDetail);
+  tblClmIncomingByDok.setCellValueFactory(new PropertyValueFactory<>("sortDocName"));
+  sortDocGetway.searchView(sortDoc);
+ 
+}
+@FXML
+private void tfSortdocSearchOnKeyReleased(KeyEvent event) {
+  sortDoc.sortDocName = tfSearchByDok.getText().trim();
+  tblPrintSortViewByDok.setItems(sortDoc.ListSortDetail);
+  tblClmIncomingByDok.setCellValueFactory(new PropertyValueFactory<>("sortDocName"));
+  sortDocGetway.searchView(sortDoc);
+}
+	@FXML
+    private void btnCloseOnAction(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
+	 
+	 @FXML
+	   private void aksiPrint1(ActionEvent event) {
+		 try{
+			SQL sql = new SQL();
+            DBConnection dbCon = new DBConnection();
+	        Connection cn = dbCon.geConnection(); 
+    		String fileName ="./src/Report/ReportIncomingByDok.jrxml";
+    		String filetoFill="./src/Report/ReportIncomingByDok.jasper";
+    		JasperCompileManager.compileReport(fileName);
+    		Map param = new HashMap();
+    		param.put("TEST",tfbyDok.getText());
+    		JasperFillManager.fillReport(filetoFill, param, cn);
+       		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+    		JasperViewer.viewReport(jp,false);
+    	 		
+    		    		
+    	}catch(Exception ex){
+    		
+    	System.out.println(ex.toString());
+    	}
+
+}
+	 @FXML
+	   private void aksiPrint(ActionEvent event) {
+		 try{
+		SQL sql = new SQL();
+        DBConnection dbCon = new DBConnection();
+	    Connection cn = dbCon.geConnection(); 
+  		String fileName ="./src/Report/ReportIncomingByDok.jrxml";
+  		String filetoFill="./src/Report/ReportIncomingByDok.jasper";
+  		JasperCompileManager.compileReport(fileName);
+  		Map param = new HashMap();
+  		param.put("TEST",tfbyDok.getText());
+  		JasperFillManager.fillReport(filetoFill, param, cn);
+     		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+  		JasperViewer.viewReport(jp,false);
+  	 		
+  		    		
+  	}catch(Exception ex){
+  		
+  	System.out.println(ex.toString());
+  	}
+
+}
+	 @FXML
+	   private void aksiPrintutgoing(ActionEvent event) {
+	        Date date = Date.from(dateoutgoing.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+	        Date date_end = Date.from(dateoutgoingend.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		 try{
+			SQL sql = new SQL();
+	        DBConnection dbCon = new DBConnection();
+		    Connection cn = dbCon.geConnection(); 
+	        String fileName ="./src/Report/ReportOutgoing1.jrxml";
+		    String filetoFill="./src/Report/ReportOutgoing1.jasper";
+	        JasperCompileManager.compileReport(fileName);
+	        Map<String, Object> param = new HashMap<String, Object>();
+	        param.put("tgl",date);
+	        param.put("tgl1",date_end);
+	        JasperFillManager.fillReport(filetoFill, param, cn);
+     		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+  		JasperViewer.viewReport(jp,false);
+  	  		  		    		
+  	}catch(Exception ex){
+  		
+  	System.out.println(ex.toString());
+  	}
+
+	    
+	   }
+
+
+@FXML
+  private void aksiPrinyincoming(ActionEvent event) {
+       Date date1 = Date.from(dateincoming.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+       Date date_end1 = Date.from(dateincomingend.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+	 try{
+		SQL sql = new SQL();
+       DBConnection dbCon = new DBConnection();
+	    Connection cn = dbCon.geConnection(); 
+       String fileName ="./src/Report/ReportIncoming.jrxml";
+	    String filetoFill="./src/Report/ReportIncoming.jasper";
+       JasperCompileManager.compileReport(fileName);
+       Map<String, Object> param = new HashMap<String, Object>();
+       param.put("tgl3",date1);
+       param.put("tgl4",date_end1);
+       JasperFillManager.fillReport(filetoFill, param, cn);
+		JasperPrint jp =JasperFillManager.fillReport(filetoFill, param, cn);
+		JasperViewer.viewReport(jp,false);
+	  		  		    		
+	}catch(Exception ex){
+		
+	System.out.println(ex.toString());
+	}
+
+   
+  }
+}	 
+
+

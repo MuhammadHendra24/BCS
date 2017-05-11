@@ -1,0 +1,181 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1596 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=6556, tid=0x00004704
+#
+# JRE version:  (8.0_101-b13) (build )
+# Java VM: Java HotSpot(TM) Client VM (25.101-b13 mixed mode windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x001ec800):  JavaThread "main" [_thread_in_vm, id=18180, stack(0x00b50000,0x00ba0000)]
+
+Stack: [0x00b50000,0x00ba0000],  sp=0x00b9f4e4,  free space=317k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1a985b]
+V  [jvm.dll+0x1a2068]
+V  [jvm.dll+0x1772f8]
+V  [jvm.dll+0xfe9d3]
+j  java.lang.Thread.start0()V+0
+j  java.lang.Thread.start()V+26
+j  java.lang.ref.Reference.<clinit>()V+61
+v  ~StubRoutines::call_stub
+V  [jvm.dll+0x15a2e5]
+V  [jvm.dll+0x21ff6e]
+V  [jvm.dll+0x15a37e]
+V  [jvm.dll+0xbf97b]
+V  [jvm.dll+0xc0b37]
+V  [jvm.dll+0xc0c88]
+V  [jvm.dll+0xc0a5f]
+V  [jvm.dll+0xc0c88]
+V  [jvm.dll+0xc0a5f]
+V  [jvm.dll+0xc0c88]
+V  [jvm.dll+0x177f7c]
+V  [jvm.dll+0xe6491]
+C  [javaw.exe+0x14d3]
+C  [javaw.exe+0x2047]
+C  [javaw.exe+0xaecf]
+C  [javaw.exe+0xaf59]
+C  [kernel32.dll+0x4ed6c]
+C  [ntdll.dll+0x637eb]
+C  [ntdll.dll+0x637be]
+C  0x00000000
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.Thread.start0()V+0
+j  java.lang.Thread.start()V+26
+j  java.lang.ref.Reference.<clinit>()V+61
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0x001ec800 JavaThread "main" [_thread_in_vm, id=18180, stack(0x00b50000,0x00ba0000)]
+
+Other Threads:
+  0x1426c800 VMThread [stack: 0x00c60000,0x00cb0000] [id=14008]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x001ea628] Threads_lock - owner thread: 0x001ec800
+
+Heap:
+ def new generation   total 4928K, used 88K [0x03e00000, 0x04350000, 0x09350000)
+  eden space 4416K,   2% used [0x03e00000, 0x03e16158, 0x04250000)
+  from space 512K,   0% used [0x04250000, 0x04250000, 0x042d0000)
+  to   space 512K,   0% used [0x042d0000, 0x042d0000, 0x04350000)
+ tenured generation   total 10944K, used 0K [0x09350000, 0x09e00000, 0x13e00000)
+   the space 10944K,   0% used [0x09350000, 0x09350000, 0x09350200, 0x09e00000)
+ Metaspace       used 647K, capacity 2240K, committed 2240K, reserved 4480K
+
+Card table byte_map: [0x00a80000,0x00b10000] byte_map_base: 0x00a61000
+
+Polling page: 0x001b0000
+
+CodeCache: size=32768Kb used=331Kb max_used=331Kb free=32436Kb
+ bounds [0x01c60000, 0x01cb8000, 0x03c60000]
+ total_blobs=59 nmethods=0 adapters=36
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 18.296 loading class java/util/Collections$UnmodifiableCollection
+Event: 18.297 loading class java/util/Collections$UnmodifiableCollection done
+Event: 18.297 loading class java/util/Collections$UnmodifiableList done
+Event: 18.297 loading class java/util/Collections$UnmodifiableRandomAccessList done
+Event: 18.297 loading class java/lang/ref/ReferenceQueue
+Event: 18.297 loading class java/lang/ref/ReferenceQueue done
+Event: 18.297 loading class java/lang/ref/ReferenceQueue$Null
+Event: 18.297 loading class java/lang/ref/ReferenceQueue$Null done
+Event: 18.297 loading class java/lang/ref/ReferenceQueue$Lock
+Event: 18.297 loading class java/lang/ref/ReferenceQueue$Lock done
+
+
+Dynamic libraries:
+0x00d50000 - 0x00d83000 	C:\Program Files\Java\jre1.8.0_101\bin\javaw.exe
+0x77820000 - 0x7795c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x77320000 - 0x773f4000 	C:\Windows\system32\kernel32.dll
+0x759c0000 - 0x75a0b000 	C:\Windows\system32\KERNELBASE.dll
+0x770f0000 - 0x77190000 	C:\Windows\system32\ADVAPI32.dll
+0x75d20000 - 0x75dcc000 	C:\Windows\system32\msvcrt.dll
+0x77960000 - 0x77979000 	C:\Windows\SYSTEM32\sechost.dll
+0x77550000 - 0x775f2000 	C:\Windows\system32\RPCRT4.dll
+0x77450000 - 0x77519000 	C:\Windows\system32\USER32.dll
+0x77190000 - 0x771de000 	C:\Windows\system32\GDI32.dll
+0x77a30000 - 0x77a3a000 	C:\Windows\system32\LPK.dll
+0x77980000 - 0x77a1d000 	C:\Windows\system32\USP10.dll
+0x748f0000 - 0x74a8e000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x77600000 - 0x77657000 	C:\Windows\system32\SHLWAPI.dll
+0x76dd0000 - 0x76def000 	C:\Windows\system32\IMM32.DLL
+0x75bc0000 - 0x75c8c000 	C:\Windows\system32\MSCTF.dll
+0x64030000 - 0x640ef000 	C:\Program Files\Java\jre1.8.0_101\bin\msvcr100.dll
+0x68190000 - 0x6855c000 	C:\Program Files\Java\jre1.8.0_101\bin\client\jvm.dll
+0x6fbf0000 - 0x6fbf7000 	C:\Windows\system32\WSOCK32.dll
+0x77250000 - 0x77285000 	C:\Windows\system32\WS2_32.dll
+0x77a20000 - 0x77a26000 	C:\Windows\system32\NSI.dll
+0x6e020000 - 0x6e052000 	C:\Windows\system32\WINMM.dll
+0x74d50000 - 0x74d59000 	C:\Windows\system32\VERSION.dll
+0x77a40000 - 0x77a45000 	C:\Windows\system32\PSAPI.DLL
+0x6ac20000 - 0x6ac2c000 	C:\Program Files\Java\jre1.8.0_101\bin\verify.dll
+0x680a0000 - 0x680c1000 	C:\Program Files\Java\jre1.8.0_101\bin\java.dll
+0x64000000 - 0x64029000 	C:\Program Files\Java\jre1.8.0_101\bin\jdwp.dll
+0x64420000 - 0x64427000 	C:\Program Files\Java\jre1.8.0_101\bin\npt.dll
+0x68040000 - 0x68053000 	C:\Program Files\Java\jre1.8.0_101\bin\zip.dll
+0x678b0000 - 0x6799b000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49802 -Dfile.encoding=Cp1252 
+java_command: Beacukai.testes
+java_class_path (initial): D:\SKRIPSI\BC-Sistem\build\classes;E:\JavaFX\mysql-connector-java-5.1.36.jar;E:\JavaFX\openjfx-dialogs-1.0.3.jar;E:\JavaFX\sqlite-jdbc-3.8.11.1.jar;E:\JavaFX\controlsfx-8.20.9.jar;E:\JavaFX\fxsampler-1.0.8.jar;E:\JavaFX\controlsfx-samples-8.20.9.jar;E:\JavaFX\fontawesomefx-8.0.8.jar;E:\JavaFX\controlsfx-8.40.9.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_66
+PATH=C:/Program Files/Java/jre1.8.0_101/bin/client;C:/Program Files/Java/jre1.8.0_101/bin;C:/Program Files/Java/jre1.8.0_101/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files\Java\jdk1.8.0_66\bin;C:\Program Files\Git\cmd\;E:\JavaFX\apache-maven-3.3.9\bin\;C:\sqlite3;D:\toolsjava\eclipse;
+USERNAME=hendra
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 (6.1.7601.18015)
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, clmul, tsc, tscinvbit
+
+Memory: 4k page, physical 1879656k(724468k free), swap 7518624k(3858808k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.101-b13) for windows-x86 JRE (1.8.0_101-b13), built on Jun 22 2016 00:45:44 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Thu Dec 08 19:55:21 2016
+elapsed time: 27 seconds (0d 0h 0m 27s)
+

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="acMain" onKeyPressed="#acMain" onMouseMoved="#acMainOnMouseMove" prefHeight="593.0" prefWidth="767.0" stylesheets="@../style/Application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ApplicationController">
+   <children>
+      <StackPane layoutY="-9.0" prefHeight="593.0" prefWidth="767.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <center>
+                  <BorderPane fx:id="appContent" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <top>
+                        <AnchorPane fx:id="acHead" prefHeight="42.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <GridPane layoutX="14.0" layoutY="-15.0" prefHeight="60.0" prefWidth="751.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                       <children>
+                                          <AnchorPane prefHeight="48.0" prefWidth="160.0">
+                                             <children>
+                                                <MenuButton fx:id="mbtnUsrInfoBox" layoutY="4.0" mnemonicParsing="false" onAction="#mbtnOnClick" prefHeight="36.0" prefWidth="120.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+                                                  <items>
+                                                    <MenuItem fx:id="miPopOver" mnemonicParsing="false">
+                                                         <graphic>
+                                                            <AnchorPane prefHeight="225.0" prefWidth="190.0">
+                                                               <children>
+                                                                  <Label fx:id="lblUsrNamePopOver" alignment="CENTER" layoutY="107.0" prefHeight="15.0" prefWidth="196.0" text="UserName" />
+                                                                  <Label fx:id="lblFullName" alignment="CENTER" layoutX="2.0" layoutY="129.0" prefHeight="15.0" prefWidth="196.0" text="Full Name" />
+                                                                  <Hyperlink fx:id="hlEditUpdateAccount" alignment="CENTER" layoutX="3.0" layoutY="163.0" onAction="#hlUpdateAccount" prefHeight="23.0" prefWidth="194.0" text="Edit/Update" />
+                                                                  <Button fx:id="btnLogOut" layoutX="3.0" layoutY="184.0" mnemonicParsing="false" onAction="#btnLogOut" prefHeight="40.0" prefWidth="196.0" text="logOut" />
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </graphic>
+                                                      </MenuItem>
+                                                  </items>
+                                                   <graphic>
+                                                      <AnchorPane prefHeight="20.0" prefWidth="120.0">
+                                                         <children>
+                                                            <Label fx:id="lblUsrName" layoutX="52.0" layoutY="17.0" text="Hendra" textAlignment="CENTER" underline="true">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font></Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </graphic>
+                                                   <padding>
+                                                      <Insets left="-15.0" top="-10.0" />
+                                                   </padding>
+                                                </MenuButton>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <ToggleButton fx:id="sideMenuToogleBtn" mnemonicParsing="false" onAction="#sideMenuToogleBtnOnCLick" prefHeight="17.0" prefWidth="33.0">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <graphic>
+                                                <ImageView fx:id="imgMenuBtn" fitHeight="52.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icon/menu.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </ToggleButton>
+                                          <Label fx:id="lblUserId" text="Label" textFill="#eeeded" visible="false" />
+                                          <MenuBar fx:id="MenBar" prefHeight="25.0" prefWidth="288.0">
+                                            <menus>
+                                              <Menu fx:id="MenItem" mnemonicParsing="false" text="File">
+                                                <items>
+                                                  <MenuItem fx:id="MenuStore" mnemonicParsing="false" onAction="#btnStoreOnClick" text="Mantenance" />
+                                                      <MenuItem fx:id="MenuSell" mnemonicParsing="false" onAction="#btnSellOnClick" text="Sell" />
+                                                      <MenuItem fx:id="MenuUser" mnemonicParsing="false" onAction="#btnUserOnClick" text="User" />
+                                                      <MenuItem fx:id="MenuSettings" mnemonicParsing="false" onAction="#btnSettingsOnClick" text="Settings" />
+                                                </items>
+                                              </Menu>
+                                              <Menu mnemonicParsing="false" text="Edit">
+                                                <items>
+                                                  <MenuItem mnemonicParsing="false" text="Delete" />
+                                                </items>
+                                              </Menu>
+                                              <Menu mnemonicParsing="false" text="Help">
+                                                <items>
+                                                  <MenuItem fx:id="MenuAbout" mnemonicParsing="false" onAction="#btnAboutOnClick" text="About" />
+                                                </items>
+                                              </Menu>
+                                            </menus>
+                                          </MenuBar>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <center>
+                        <StackPane fx:id="acContent" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </StackPane>
+                     </center>
+                     <left>
+                        <AnchorPane fx:id="acDashBord" BorderPane.alignment="CENTER">
+                           <children>
+                              <ScrollPane fx:id="leftSideBarScroolPan" prefHeight="678.0" prefViewportHeight="678.0" prefViewportWidth="128.0" prefWidth="128.0" translateX="1.0" translateY="1.0" translateZ="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="btnHome" contentDisplay="TOP" layoutY="-3.0" mnemonicParsing="false" onAction="#btnHomeOnClick" prefHeight="44.0" prefWidth="127.0" text="Home" textFill="#070707">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnStore" contentDisplay="TOP" layoutY="44.0" mnemonicParsing="false" onAction="#btnStoreOnClick" prefHeight="44.0" prefWidth="127.0" text="Masintenance" textFill="#e0e1e7">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnUser" contentDisplay="TOP" layoutY="139.0" mnemonicParsing="false" onAction="#btnUserOnClick" prefHeight="44.0" prefWidth="127.0" text="User" textFill="#e0e1e7">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnSell" contentDisplay="TOP" layoutY="91.0" mnemonicParsing="false" onAction="#btnSellOnClick" prefHeight="44.0" prefWidth="127.0" text="Sell" textFill="#e0e1e7">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnSettings" contentDisplay="TOP" layoutY="187.0" mnemonicParsing="false" onAction="#btnSettingsOnClick" prefHeight="44.0" prefWidth="127.0" text="Settings" textFill="#e0e1e7">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnAbout" contentDisplay="TOP" layoutY="236.0" mnemonicParsing="false" onAction="#btnAboutOnClick" prefHeight="44.0" prefWidth="127.0" text="About" textFill="#e0e1e7">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

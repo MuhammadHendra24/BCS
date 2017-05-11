@@ -1,0 +1,58 @@
+1480839096428	Delete element
+1480839493785	Delete element
+1480843011373	Rename resource 'Application.fxml'
+1480846797440	Rename resource 'BlueVector.jpg'
+1480848413898	Delete elements
+1480850431706	Delete element
+1480850833086	Delete element
+1480850886768	Delete element
+1480852747580	Delete element
+1480853212917	Move file
+1480854491792	Move file
+1480855197476	Move file
+1480855208493	Move file
+1480855714347	Move file
+1480856164249	Move file
+1480860423278	Rename resource 'User.fxml'
+1480865912145	Delete element
+1480865954792	Delete element
+1480866324692	Rename resource 'AboutMe.fxml'
+1480866422457	Delete element
+1480866431446	Delete element
+1481152119796	Rename resource 'ViewSell.fxml'
+1481152142742	Rename type 'ViewSellController'
+1481152205373	Rename type 'SellController'
+1481152226879	Rename package 'controller.application.sell'
+1481152294741	Rename package 'view.application.sell'
+1481152394012	Rename resource 'Sell.fxml'
+1481152590831	Rename resource 'Stock.fxml'
+1481152627785	Rename package 'view.application.stock'
+1481152638439	Move file
+1481152641387	Move file
+1481152644235	Move file
+1481152647143	Move file
+1481152850262	Rename package 'controller.application.stock'
+1481152864833	Rename package 'controller.application.Incoming'
+1481152890279	Move compilation unit
+1481152896009	Move compilation unit
+1481152905310	Move compilation unit
+1481152909866	Move compilation unit
+1481152930492	Rename type 'StockController'
+1481156854082	Rename resource 'ViewIncomingl.fxml'
+1481174295831	Copy compilation unit
+1481174339415	Copy compilation unit
+1481174358488	Rename type 'ListIncomingOutgoing2'
+1481174976590	Copy compilation units
+1481175005586	Rename type 'AddIncomingMaterials2'
+1481175026285	Rename type 'ViewIncomingController2'
+1481175037854	Copy files
+1481175051793	Rename resource 'AddIncomingMaterials2.fxml'
+1481175064432	Rename resource 'ViewIncoming2.fxml'
+1481175097775	Copy compilation unit
+1481206281967	Rename type 'AddOutgoing'
+1481220465708	Copy file
+1481220477640	Rename resource 'AddCurrency.fxml'
+1481223677529	Copy compilation unit
+1481307779109	Move files
+1481307972252	Move files
+1481362517261	Copy file

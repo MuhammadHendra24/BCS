@@ -1,0 +1,90 @@
+package controller.application.maintenance;
+
+import BLL.ItemBLL;
+import Getway.ItemMasterGateway;
+import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import media.userNameMedia;
+import DAL.ItemMaster;
+
+public class AddItemMasterController implements Initializable {
+	@FXML
+    private TextField tfItemName;
+	@FXML
+    private TextField tfItemDescription;
+	@FXML
+    private TextField tfUm;
+    
+    @FXML
+    public Label lblItemContent;
+    @FXML
+    private Button btnClose;
+    @FXML
+    public Button btnUpdate;
+    @FXML
+    public Button btnSave;
+    
+    public String itemId;
+    
+    private String userId;
+    
+    userNameMedia nameMedia;
+    
+
+    public void setNameMedia(userNameMedia nameMedia) {
+        userId = nameMedia.getId();
+        this.nameMedia = nameMedia;
+    }
+    
+    ItemMaster itemmaster = new ItemMaster();
+    ItemMasterGateway itemmasterGatway = new ItemMasterGateway();
+    ItemBLL itemBLL = new ItemBLL();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    @FXML
+    private void btnSaveOnItemAction(ActionEvent event) {
+    	itemmaster.itemCode = tfItemName.getText().trim();
+        itemmaster.itemDescription = tfItemDescription.getText().trim();
+        itemmaster.um = tfUm.getText().trim();
+        itemmaster.userId = userId;
+        tfItemName.clear();
+        tfItemDescription.clear();
+        itemBLL.save(itemmaster);
+    }
+
+    @FXML
+    private void btnCloseOnAction(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void btnUpdateItemMasterOnAction(ActionEvent event) {
+    	 itemmaster.id = itemId;
+         itemmaster.itemCode = tfItemName.getText().trim();
+         itemmaster.itemDescription = tfItemDescription.getText().trim();
+         itemmaster.um = tfUm.getText().trim();
+         itemBLL.update(itemmaster);
+         
+       
+          }
+    
+    public void viewDetails(){
+    	 itemmaster.id = itemId;
+         itemmasterGatway.selectedView(itemmaster);
+         tfItemName.setText(itemmaster.itemCode);
+         tfItemDescription.setText(itemmaster.itemDescription);
+         tfUm.setText(itemmaster.um); 
+         }
+}

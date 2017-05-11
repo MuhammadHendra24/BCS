@@ -1,0 +1,192 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x67209a03, pid=9540, tid=0x00002f20
+#
+# JRE version:  (8.0_101-b13) (build )
+# Java VM: Java HotSpot(TM) Client VM (25.101-b13 mixed mode windows-x86 )
+# Problematic frame:
+# V  [jvm.dll+0x159a03]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x018dc400):  JavaThread "Unknown thread" [_thread_in_vm, id=12064, stack(0x017d0000,0x01820000)]
+
+siginfo: ExceptionCode=0xc0000005, writing address 0x0181b7bc
+
+Registers:
+EAX=0x00004000, EBX=0x0181f8cc, ECX=0x0181b7bc, EDX=0x01130a70
+ESP=0x0181f7c8, EBP=0x0181f834, ESI=0x00000005, EDI=0x0181f7bc
+EIP=0x67209a03, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x0181f7c8)
+0x0181f7c8:   00000000 018dc400 6720a293 018dc400
+0x0181f7d8:   01130a70 13c010b0 0181f7f8 6720c136
+0x0181f7e8:   00000000 13c010e0 13c00ae8 011530c8
+0x0181f7f8:   0181f814 67168b73 01153058 13c010e0
+0x0181f808:   13c00ae8 011530c8 ffffffff 00000000
+0x0181f818:   0181f8bc 13c010b0 018dc400 0000000a
+0x0181f828:   00000000 00000000 01bbf870 0181f87c
+0x0181f838:   672cff6e 0181f8c4 0181f8a8 0181f8dc 
+
+Instructions: (pc=0x67209a03)
+0x672099e3:   79 66 0c 00 be 01 00 00 00 8b f8 39 35 b0 88 40
+0x672099f3:   67 7c 1b e8 05 3f 06 00 0f af c6 8b cf 2b c8 46
+0x67209a03:   c7 01 00 00 00 00 3b 35 b0 88 40 67 7e e5 5f 5e
+0x67209a13:   c3 cc cc cc cc cc cc cc cc cc cc cc cc 8b 01 8b 
+
+
+Register to memory mapping:
+
+EAX=0x00004000 is an unknown value
+EBX=0x0181f8cc is pointing into the stack for thread: 0x018dc400
+ECX=0x0181b7bc is pointing into the stack for thread: 0x018dc400
+EDX=0x01130a70 is an unknown value
+ESP=0x0181f7c8 is pointing into the stack for thread: 0x018dc400
+EBP=0x0181f834 is pointing into the stack for thread: 0x018dc400
+ESI=0x00000005 is an unknown value
+EDI=0x0181f7bc is pointing into the stack for thread: 0x018dc400
+
+
+Stack: [0x017d0000,0x01820000],  sp=0x0181f7c8,  free space=317k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x159a03]
+V  [jvm.dll+0x21ff6e]
+V  [jvm.dll+0x15a37e]
+V  [jvm.dll+0xbf97b]
+V  [jvm.dll+0xc0b37]
+V  [jvm.dll+0xc0c88]
+V  [jvm.dll+0xc0a5f]
+V  [jvm.dll+0xc0c88]
+V  [jvm.dll+0x177f7c]
+V  [jvm.dll+0xe6491]
+C  [javaw.exe+0x14d3]
+C  [javaw.exe+0x2047]
+C  [javaw.exe+0xaecf]
+C  [javaw.exe+0xaf59]
+C  [kernel32.dll+0x4ed6c]
+C  [ntdll.dll+0x637eb]
+C  [ntdll.dll+0x637be]
+C  0x00000000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0x018dc400 JavaThread "Unknown thread" [_thread_in_vm, id=12064, stack(0x017d0000,0x01820000)]
+
+Other Threads:
+  0x1406cc00 VMThread [stack: 0x14290000,0x142e0000] [id=13620]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ def new generation   total 4928K, used 88K [0x03c00000, 0x04150000, 0x09150000)
+  eden space 4416K,   2% used [0x03c00000, 0x03c16158, 0x04050000)
+  from space 512K,   0% used [0x04050000, 0x04050000, 0x040d0000)
+  to   space 512K,   0% used [0x040d0000, 0x040d0000, 0x04150000)
+ tenured generation   total 10944K, used 0K [0x09150000, 0x09c00000, 0x13c00000)
+   the space 10944K,   0% used [0x09150000, 0x09150000, 0x09150200, 0x09c00000)
+ Metaspace       used 505K, capacity 2240K, committed 2240K, reserved 4480K
+
+Card table byte_map: [0x012d0000,0x01360000] byte_map_base: 0x012b2000
+
+Polling page: 0x00340000
+
+CodeCache: size=32768Kb used=297Kb max_used=297Kb free=32470Kb
+ bounds [0x01bb0000, 0x01c00000, 0x03bb0000]
+ total_blobs=52 nmethods=0 adapters=31
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 5.498 loading class java/lang/Short done
+Event: 5.498 loading class java/lang/Integer
+Event: 5.498 loading class java/lang/Integer done
+Event: 5.498 loading class java/lang/Long
+Event: 5.498 loading class java/lang/Long done
+Event: 5.499 loading class java/lang/NullPointerException
+Event: 5.499 loading class java/lang/NullPointerException done
+Event: 5.499 loading class java/lang/ArithmeticException
+Event: 5.499 loading class java/lang/ArithmeticException done
+Event: 5.999 Thread 0x018dc400 Thread added: 0x018dc400
+
+
+Dynamic libraries:
+0x01370000 - 0x013a3000 	C:\Program Files\Java\jre1.8.0_101\bin\javaw.exe
+0x778a0000 - 0x779dc000 	C:\Windows\SYSTEM32\ntdll.dll
+0x75c40000 - 0x75d14000 	C:\Windows\system32\kernel32.dll
+0x759d0000 - 0x75a1b000 	C:\Windows\system32\KERNELBASE.dll
+0x75d20000 - 0x75dc0000 	C:\Windows\system32\ADVAPI32.dll
+0x76090000 - 0x7613c000 	C:\Windows\system32\msvcrt.dll
+0x75de0000 - 0x75df9000 	C:\Windows\SYSTEM32\sechost.dll
+0x77280000 - 0x77322000 	C:\Windows\system32\RPCRT4.dll
+0x775c0000 - 0x77689000 	C:\Windows\system32\USER32.dll
+0x77510000 - 0x7755e000 	C:\Windows\system32\GDI32.dll
+0x771e0000 - 0x771ea000 	C:\Windows\system32\LPK.dll
+0x76140000 - 0x761dd000 	C:\Windows\system32\USP10.dll
+0x74830000 - 0x749ce000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x77560000 - 0x775b7000 	C:\Windows\system32\SHLWAPI.dll
+0x75dc0000 - 0x75ddf000 	C:\Windows\system32\IMM32.DLL
+0x77a00000 - 0x77acc000 	C:\Windows\system32\MSCTF.dll
+0x6a8f0000 - 0x6a9af000 	C:\Program Files\Java\jre1.8.0_101\bin\msvcr100.dll
+0x670b0000 - 0x6747c000 	C:\Program Files\Java\jre1.8.0_101\bin\client\jvm.dll
+0x6f580000 - 0x6f587000 	C:\Windows\system32\WSOCK32.dll
+0x77330000 - 0x77365000 	C:\Windows\system32\WS2_32.dll
+0x779e0000 - 0x779e6000 	C:\Windows\system32\NSI.dll
+0x70620000 - 0x70652000 	C:\Windows\system32\WINMM.dll
+0x74dd0000 - 0x74dd9000 	C:\Windows\system32\VERSION.dll
+0x779f0000 - 0x779f5000 	C:\Windows\system32\PSAPI.DLL
+0x73e30000 - 0x73e3c000 	C:\Program Files\Java\jre1.8.0_101\bin\verify.dll
+0x6c8b0000 - 0x6c8d1000 	C:\Program Files\Java\jre1.8.0_101\bin\java.dll
+0x6a8c0000 - 0x6a8e9000 	C:\Program Files\Java\jre1.8.0_101\bin\jdwp.dll
+0x6c730000 - 0x6c737000 	C:\Program Files\Java\jre1.8.0_101\bin\npt.dll
+0x6c890000 - 0x6c8a3000 	C:\Program Files\Java\jre1.8.0_101\bin\zip.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49424 -Dfile.encoding=Cp1252 
+java_command: BeaCukai.Customs
+java_class_path (initial): D:\SKRIPSI\BC-Sistem\build\classes;E:\JavaFX\mysql-connector-java-5.1.36.jar;E:\JavaFX\openjfx-dialogs-1.0.3.jar;E:\JavaFX\sqlite-jdbc-3.8.11.1.jar;E:\JavaFX\controlsfx-8.20.9.jar;E:\JavaFX\fxsampler-1.0.8.jar;E:\JavaFX\controlsfx-samples-8.20.9.jar;E:\JavaFX\fontawesomefx-8.0.8.jar;E:\JavaFX\controlsfx-8.40.9.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_66
+PATH=C:/Program Files/Java/jre1.8.0_101/bin/client;C:/Program Files/Java/jre1.8.0_101/bin;C:/Program Files/Java/jre1.8.0_101/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files\Java\jdk1.8.0_66\bin;C:\Program Files\Git\cmd\;E:\JavaFX\apache-maven-3.3.9\bin\;C:\sqlite3;E:\Software\eclipse-committers-mars-2-win32\eclipse;
+USERNAME=hendra
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 (6.1.7601.18015)
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, clmul, tsc, tscinvbit
+
+Memory: 4k page, physical 1879656k(98548k free), swap 5556528k(279108k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.101-b13) for windows-x86 JRE (1.8.0_101-b13), built on Jun 22 2016 00:45:44 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Nov 23 08:44:04 2016
+elapsed time: 11 seconds (0d 0h 0m 11s)
+

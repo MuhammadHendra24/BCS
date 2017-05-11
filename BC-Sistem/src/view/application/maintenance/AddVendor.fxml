@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Group xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.application.maintenance.AddVendorController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="apContent" layoutX="6.0" layoutY="7.0" onMouseDragged="#apOnMouseDragged" onMousePressed="#apOnMousePressed" prefHeight="565.0" prefWidth="475.0">
+         <children>
+            <GridPane layoutX="46.0" layoutY="43.0">
+               <children>
+                  <TextField fx:id="tfVendorName" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+                  <TextField fx:id="taContactNumbers" GridPane.columnSpan="4" GridPane.rowIndex="3" />
+                  <TextArea fx:id="taVendorAddress" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+                  <TextArea fx:id="taVendorDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="8" GridPane.rowSpan="2" />
+                  <Label text="Vendor Name :" GridPane.columnSpan="2" />
+                  <Label text="Vendor Contact No" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                  <Label text="Vendor Address :" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                  <Label text="Vendor Description :" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.rowSpan="2" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Label fx:id="lblCaption" alignment="CENTER" layoutX="89.0" layoutY="14.0" prefHeight="36.0" prefWidth="265.0" text="Add Vendor">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnClose" layoutX="470.0" layoutY="-4.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="36.0" prefWidth="31.0" stylesheets="@../../../style/btnOnText.css" />
+         </children>
+         <stylesheets>
+            <URL value="@../../../style/PopUp.css" />
+            <URL value="@../../../style/MainStyle.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</Group>

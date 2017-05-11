@@ -1,0 +1,137 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 10480 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=7992, tid=0x00002eec
+#
+# JRE version:  (8.0_101-b13) (build )
+# Java VM: Java HotSpot(TM) Client VM (25.101-b13 mixed mode, sharing windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x018dc400):  JavaThread "Unknown thread" [_thread_in_vm, id=12012, stack(0x01830000,0x01880000)]
+
+Stack: [0x01830000,0x01880000],  sp=0x0187f8a4,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1a985b]
+V  [jvm.dll+0x1a2068]
+V  [jvm.dll+0x5094]
+V  [jvm.dll+0x5538]
+V  [jvm.dll+0x77fe1]
+V  [jvm.dll+0x78601]
+V  [jvm.dll+0xa46cb]
+V  [jvm.dll+0x988e0]
+V  [jvm.dll+0xa88e7]
+V  [jvm.dll+0x158c24]
+V  [jvm.dll+0x17cecb]
+V  [jvm.dll+0xe6491]
+C  [javaw.exe+0x14d3]
+C  [javaw.exe+0x2047]
+C  [javaw.exe+0xaecf]
+C  [javaw.exe+0xaf59]
+C  [kernel32.dll+0x4ed6c]
+C  [ntdll.dll+0x637eb]
+C  [ntdll.dll+0x637be]
+C  0x00000000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x018dc400 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=12012, stack(0x01830000,0x01880000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x01370000 - 0x013a3000 	C:\Program Files\Java\jre1.8.0_101\bin\javaw.exe
+0x778a0000 - 0x779dc000 	C:\Windows\SYSTEM32\ntdll.dll
+0x75c40000 - 0x75d14000 	C:\Windows\system32\kernel32.dll
+0x759d0000 - 0x75a1b000 	C:\Windows\system32\KERNELBASE.dll
+0x75d20000 - 0x75dc0000 	C:\Windows\system32\ADVAPI32.dll
+0x76090000 - 0x7613c000 	C:\Windows\system32\msvcrt.dll
+0x75de0000 - 0x75df9000 	C:\Windows\SYSTEM32\sechost.dll
+0x77280000 - 0x77322000 	C:\Windows\system32\RPCRT4.dll
+0x775c0000 - 0x77689000 	C:\Windows\system32\USER32.dll
+0x77510000 - 0x7755e000 	C:\Windows\system32\GDI32.dll
+0x771e0000 - 0x771ea000 	C:\Windows\system32\LPK.dll
+0x76140000 - 0x761dd000 	C:\Windows\system32\USP10.dll
+0x74830000 - 0x749ce000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\COMCTL32.dll
+0x77560000 - 0x775b7000 	C:\Windows\system32\SHLWAPI.dll
+0x75dc0000 - 0x75ddf000 	C:\Windows\system32\IMM32.DLL
+0x77a00000 - 0x77acc000 	C:\Windows\system32\MSCTF.dll
+0x6a8f0000 - 0x6a9af000 	C:\Program Files\Java\jre1.8.0_101\bin\msvcr100.dll
+0x670b0000 - 0x6747c000 	C:\Program Files\Java\jre1.8.0_101\bin\client\jvm.dll
+0x6f580000 - 0x6f587000 	C:\Windows\system32\WSOCK32.dll
+0x77330000 - 0x77365000 	C:\Windows\system32\WS2_32.dll
+0x779e0000 - 0x779e6000 	C:\Windows\system32\NSI.dll
+0x70620000 - 0x70652000 	C:\Windows\system32\WINMM.dll
+0x74dd0000 - 0x74dd9000 	C:\Windows\system32\VERSION.dll
+0x779f0000 - 0x779f5000 	C:\Windows\system32\PSAPI.DLL
+0x73e30000 - 0x73e3c000 	C:\Program Files\Java\jre1.8.0_101\bin\verify.dll
+0x6c8b0000 - 0x6c8d1000 	C:\Program Files\Java\jre1.8.0_101\bin\java.dll
+0x6a8c0000 - 0x6a8e9000 	C:\Program Files\Java\jre1.8.0_101\bin\jdwp.dll
+0x6c730000 - 0x6c737000 	C:\Program Files\Java\jre1.8.0_101\bin\npt.dll
+0x6c890000 - 0x6c8a3000 	C:\Program Files\Java\jre1.8.0_101\bin\zip.dll
+0x66c00000 - 0x66ceb000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49527 -Dfile.encoding=Cp1252 
+java_command: BeaCukai.Customs
+java_class_path (initial): D:\SKRIPSI\BC-Sistem\build\classes;E:\JavaFX\mysql-connector-java-5.1.36.jar;E:\JavaFX\openjfx-dialogs-1.0.3.jar;E:\JavaFX\sqlite-jdbc-3.8.11.1.jar;E:\JavaFX\controlsfx-8.20.9.jar;E:\JavaFX\fxsampler-1.0.8.jar;E:\JavaFX\controlsfx-samples-8.20.9.jar;E:\JavaFX\fontawesomefx-8.0.8.jar;E:\JavaFX\controlsfx-8.40.9.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_66
+PATH=C:/Program Files/Java/jre1.8.0_101/bin/client;C:/Program Files/Java/jre1.8.0_101/bin;C:/Program Files/Java/jre1.8.0_101/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files\Java\jdk1.8.0_66\bin;C:\Program Files\Git\cmd\;E:\JavaFX\apache-maven-3.3.9\bin\;C:\sqlite3;E:\Software\eclipse-committers-mars-2-win32\eclipse;
+USERNAME=hendra
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7601 (6.1.7601.18015)
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, clmul, tsc, tscinvbit
+
+Memory: 4k page, physical 1879656k(131932k free), swap 5556528k(557652k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.101-b13) for windows-x86 JRE (1.8.0_101-b13), built on Jun 22 2016 00:45:44 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Nov 23 08:44:05 2016
+elapsed time: 12 seconds (0d 0h 0m 12s)
+

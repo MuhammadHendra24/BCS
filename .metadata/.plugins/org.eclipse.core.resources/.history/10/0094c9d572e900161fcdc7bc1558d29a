@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-03T00:52:27 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportOutgoingCustomer" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="708a95de-90f0-4f1b-8d49-541df60db910">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DatabaseLaporanGudangBerikat"/>
+	<queryString language="SQL">
+		<![CDATA[select*from outgoing]]>
+	</queryString>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="ShortDocument" class="java.lang.String"/>
+	<field name="NoDoc" class="java.lang.String"/>
+	<field name="DateNoDoc" class="java.sql.Date"/>
+	<field name="Customer" class="java.lang.String"/>
+	<field name="NoInvoice" class="java.lang.String"/>
+	<field name="NoDo" class="java.lang.String"/>
+	<field name="DateNoDo" class="java.sql.Date"/>
+	<field name="ItemCode" class="java.lang.String"/>
+	<field name="Description" class="java.lang.String"/>
+	<field name="Currency" class="java.lang.String"/>
+	<field name="UM" class="java.lang.String"/>
+	<field name="GoodQty" class="java.lang.String"/>
+	<field name="Price" class="java.lang.Double"/>
+	<field name="GWeight" class="java.lang.String"/>
+	<field name="CreatorId" class="java.lang.String"/>
+	<field name="Date" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

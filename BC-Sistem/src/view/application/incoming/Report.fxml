@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Group xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.application.incoming.Report">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="7.0" prefHeight="447.0" prefWidth="446.0" stylesheets="@../../../style/PopUp.css">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" prefHeight="29.0" prefWidth="448.0" text="Report">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnClose" layoutX="421.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="30.0" prefWidth="27.0" stylesheets="@../../../style/btnOnText.css" />
+            <Label alignment="CENTER" layoutX="76.0" layoutY="68.0" prefHeight="27.0" prefWidth="164.0" text="Report by Vendor">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="86.0" layoutY="280.0" prefHeight="27.0" prefWidth="252.0" text="Report by Periode ( Outgoing )">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="mbtnByVendor" layoutX="175.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#mbtnVendorClicked" prefHeight="25.0" prefWidth="27.0">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="tfSearchByVendor" onKeyReleased="#tfVendorSearchOnKeyReleased" prefHeight="25.0" prefWidth="150.0" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TableView fx:id="tblPrintSortViewByVendor" onMouseClicked="#tblPrintSortViewByVendorOnClick" prefHeight="150.0" prefWidth="200.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="tblClmByVendorPrint" prefWidth="142.0" text="Select Document" />
+                           </columns>
+                        </TableView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </MenuButton>
+            <TextField fx:id="tfbyVendor" layoutX="87.0" layoutY="94.0" onAction="#aksiPrint2" prefHeight="25.0" prefWidth="91.0" />
+            <Label fx:id="lblCurencyContent21" alignment="CENTER" layoutX="209.0" layoutY="305.0" prefHeight="35.0" prefWidth="27.0" text="S/D" />
+            <Button fx:id="btnPrintByVendor" layoutX="275.0" layoutY="94.0" mnemonicParsing="false" onAction="#aksiPrint2" prefHeight="25.0" prefWidth="67.0" text="Print" />
+            <DatePicker fx:id="dateoutgoing" layoutX="88.0" layoutY="310.0" prefHeight="25.0" prefWidth="118.0" />
+            <DatePicker fx:id="dateoutgoingend" layoutX="238.0" layoutY="310.0" prefHeight="25.0" prefWidth="118.0" />
+            <Button fx:id="btnPrintByCustomer" layoutX="275.0" layoutY="149.0" mnemonicParsing="false" onAction="#aksiPrint1" prefHeight="25.0" prefWidth="67.0" text="Print" />
+            <TextField fx:id="tfbyCustomer" layoutX="89.0" layoutY="149.0" onAction="#aksiPrint1" prefHeight="25.0" prefWidth="91.0" />
+            <MenuButton fx:id="mbtnByCustomer" layoutX="176.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#mbtnCustomerClicked" prefHeight="25.0" prefWidth="27.0">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="tfSearchByCustomer" onKeyReleased="#tfCustomerSearchOnKeyReleased" prefHeight="25.0" prefWidth="150.0" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TableView fx:id="tblPrintSortViewByCustomer" onMouseClicked="#tblPrintSortViewByCustomerOnClick" prefHeight="150.0" prefWidth="200.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="tblClmByCustomer" prefWidth="142.0" text="Select Document" />
+                           </columns>
+                        </TableView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </MenuButton>
+            <Label alignment="CENTER" layoutX="87.0" layoutY="120.0" prefHeight="27.0" prefWidth="164.0" text="Report by Customer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateincomingend" layoutX="240.0" layoutY="367.0" prefHeight="25.0" prefWidth="118.0" />
+            <DatePicker fx:id="dateincoming" layoutX="89.0" layoutY="367.0" prefHeight="25.0" prefWidth="118.0" />
+            <Label fx:id="lblCurencyContent211" alignment="CENTER" layoutX="210.0" layoutY="362.0" prefHeight="35.0" prefWidth="27.0" text="S/D" />
+            <Label alignment="CENTER" layoutX="87.0" layoutY="337.0" prefHeight="27.0" prefWidth="252.0" text="Report by Periode ( Incoming )">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnPrintIncoming" layoutX="381.0" layoutY="367.0" mnemonicParsing="false" onAction="#aksiPrinyincoming" prefHeight="25.0" prefWidth="67.0" text="Print" />
+            <Button fx:id="btnPrintOutgoing" layoutX="381.0" layoutY="310.0" mnemonicParsing="false" onAction="#aksiPrintutgoing" prefHeight="25.0" prefWidth="67.0" text="Print" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnPrintByItem" layoutX="284.0" layoutY="203.0" mnemonicParsing="false" onAction="#aksiPrint3" prefHeight="25.0" prefWidth="67.0" text="Print" />
+      <TextField fx:id="tfbyItem" layoutX="97.0" layoutY="203.0" onAction="#aksiPrint3" prefHeight="25.0" prefWidth="91.0" />
+      <MenuButton fx:id="mbtnByItem" layoutX="185.0" layoutY="203.0" mnemonicParsing="false" onMouseClicked="#mbtnByItemClicked" prefHeight="25.0" prefWidth="27.0">
+         <items>
+            <MenuItem mnemonicParsing="false">
+               <graphic>
+                  <TextField fx:id="tfSearchByItem" onKeyReleased="#tfItemSearchOnKeyReleased" prefHeight="25.0" prefWidth="150.0" />
+               </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false">
+               <graphic>
+                  <TableView fx:id="tblPrintSortViewByItem" onMouseClicked="#tblPrintSortViewByItemOnClick" prefHeight="150.0" prefWidth="200.0">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                        <TableColumn fx:id="tblClmIByItem" prefWidth="142.0" text="Select Document" />
+                     </columns>
+                  </TableView>
+               </graphic>
+            </MenuItem>
+         </items>
+      </MenuButton>
+      <Label alignment="CENTER" layoutX="86.0" layoutY="177.0" prefHeight="27.0" prefWidth="142.0" text="Report by Item">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnPrintByDok" layoutX="285.0" layoutY="256.0" mnemonicParsing="false" onAction="#aksiPrint" prefHeight="25.0" prefWidth="67.0" text="Print" />
+      <TextField fx:id="tfbyDok" layoutX="98.0" layoutY="256.0" onAction="#aksiPrint" prefHeight="25.0" prefWidth="91.0" />
+      <MenuButton fx:id="mbtnByDok" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#mbtnSortDocClicked" prefHeight="25.0" prefWidth="27.0">
+         <items>
+            <MenuItem mnemonicParsing="false">
+               <graphic>
+                  <TextField fx:id="tfSearchByDok" onKeyReleased="#tfSortdocSearchOnKeyReleased" prefHeight="25.0" prefWidth="150.0" />
+               </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false">
+               <graphic>
+                  <TableView fx:id="tblPrintSortViewByDok" onMouseClicked="#tblPrintSortViewByDokOnClick" prefHeight="150.0" prefWidth="200.0">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                        <TableColumn fx:id="tblClmIncomingByDok" prefWidth="142.0" text="Select Document" />
+                     </columns>
+                  </TableView>
+               </graphic>
+            </MenuItem>
+         </items>
+      </MenuButton>
+      <Label alignment="CENTER" layoutX="87.0" layoutY="230.0" prefHeight="27.0" prefWidth="177.0" text="Report by Jenis Dok">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Group>
